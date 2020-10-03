@@ -9,7 +9,32 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+        // this.increaseQuantity = this.increaseQuantity.bind(this);
     }
+    increaseQuantity = () => {
+        console.log(this.state);
+        // setState Form 1 - Object Form
+        // this.setState({
+        //     qty: this.state.qty + 1
+        // })
+
+        // setState form 2 - Function form - If prevState Required
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        })
+    }
+
+    decreaseQuantity = () => {
+        // setState Form 2
+        this.setState(() => {
+            return {
+                qty: this.state.qty - 1
+            }
+        })
+    }
+
     render () {
         const { title, price, qty } = this.state;
         return (
@@ -22,9 +47,23 @@ class CartItem extends React.Component {
                     <div style = { { color: '#777' } }>Rs { price }</div>
                     <div style = { { color: '#777' } }>Qty: { qty }</div>
                     <div className = "cart-item-actions">
-                        <img alt = "increase" className = "action-icons" src = "https://www.flaticon.com/svg/static/icons/svg/992/992651.svg" />
-                        <img alt = "increase" className = "action-icons" src = "https://www.flaticon.com/svg/static/icons/svg/992/992683.svg" />    
-                        <img alt = "increase" className = "action-icons" src = "https://www.flaticon.com/svg/static/icons/svg/1214/1214428.svg" />
+                        <img 
+                            alt = "increase" 
+                            className = "action-icons" 
+                            src = "https://www.flaticon.com/svg/static/icons/svg/992/992651.svg" 
+                            onClick={ this.increaseQuantity }
+                        />
+                        <img
+                            alt = "increase" 
+                            className = "action-icons" 
+                            src = "https://www.flaticon.com/svg/static/icons/svg/992/992683.svg" 
+                            onClick = { this.decreaseQuantity }
+                        />    
+                        <img 
+                            alt = "increase" 
+                            className = "action-icons" 
+                            src = "https://www.flaticon.com/svg/static/icons/svg/1214/1214428.svg" 
+                        />
                     </div>
                 </div>
             </div>
