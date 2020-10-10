@@ -1,16 +1,6 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor () {
-        super();
-        this.state = {
-            title: 'Xiaomi Redmi Note 7 Pro',
-            price: 9999,
-            qty: 1,
-            img: ''
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-    }
     increaseQuantity = () => {
         // console.log(this.state);
         // setState Form 1 - Object Form - 
@@ -59,7 +49,9 @@ class CartItem extends React.Component {
     }
 
     render () {
-        const { title, price, qty } = this.state;
+        console.log('this.props', this.props);
+        const { title, price, qty } = this.props.product;
+        const { product, onIncreaseQuantity, onDecreaseQuantity } = this.props;
         return (
             <div className = "cart-item">
                 <div className = "left-block">
@@ -74,13 +66,13 @@ class CartItem extends React.Component {
                             alt = "increase" 
                             className = "action-icons" 
                             src = "https://www.flaticon.com/svg/static/icons/svg/992/992651.svg" 
-                            onClick={ this.increaseQuantity }
+                            onClick={() => onIncreaseQuantity(product)}
                         />
                         <img
                             alt = "increase" 
                             className = "action-icons" 
                             src = "https://www.flaticon.com/svg/static/icons/svg/992/992683.svg" 
-                            onClick = { this.decreaseQuantity }
+                            onClick = { () => onDecreaseQuantity(product) }
                         />    
                         <img 
                             alt = "increase" 
