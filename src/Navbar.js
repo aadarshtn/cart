@@ -1,16 +1,14 @@
 import React from 'react';
 
-class Navbar extends React.Component {
-    render () {
-        return (
-            <div style={styles.nav}>
-                <div style={styles.cartIconContainer}>
-                    <img src = "https://www.flaticon.com/svg/static/icons/svg/1077/1077999.svg" alt = "cart-icon" style={styles.cartIcon}></img>
-                    <span style={styles.cartCount}><code>3</code></span>
-                </div>
+const Navbar = (props) => {
+    return (
+        <div style={styles.nav}>
+            <div style={styles.cartIconContainer}>
+                <img src = "https://www.flaticon.com/svg/static/icons/svg/1077/1077999.svg" alt = "cart-icon" style={styles.cartIcon}></img>
+                <span style={styles.cartCount}><code>{ props.count }</code></span>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 const styles = {

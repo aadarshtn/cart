@@ -14,6 +14,8 @@ code {
 
 .cart-item {
   display: inline-flex;
+  height: 100px;
+  width: auto;
   margin: 20px 10px;
 }
 .cart-item .right-block {
@@ -34,4 +36,9 @@ code {
 .cart{
   display: flex;
   flex-direction: column;
+}
+
+.cartTotal { 
+  margin: 15px;
+  text-align: end;
 }
