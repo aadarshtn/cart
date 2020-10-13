@@ -1,57 +1,57 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    increaseQuantity = () => {
-        // console.log(this.state);
-        // setState Form 1 - Object Form - 
-        // Bcoz of batching multiple setState calls will yield result of last 
-        // setState Call
-        // this.setState({
-        //     qty: this.state.qty + 2
-        // });
+    // increaseQuantity = () => {
+    //     // console.log(this.state);
+    //     // setState Form 1 - Object Form - 
+    //     // Bcoz of batching multiple setState calls will yield result of last 
+    //     // setState Call
+    //     // this.setState({
+    //     //     qty: this.state.qty + 2
+    //     // });
 
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // });
+    //     // this.setState({
+    //     //     qty: this.state.qty + 1
+    //     // });
 
-        // setState form 2 - Function form - If prevState Required - 
-        // Multiple setState calls can be executed to yield summed up result
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        }, () => {
-            // A call back function can be given as second argument for setState
-            // This helps in getting exact current value of state
-            console.log('this.state', this.state); 
-        });
+    //     // setState form 2 - Function form - If prevState Required - 
+    //     // Multiple setState calls can be executed to yield summed up result
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty: prevState.qty + 1
+    //         }
+    //     }, () => {
+    //         // A call back function can be given as second argument for setState
+    //         // This helps in getting exact current value of state
+    //         console.log('this.state', this.state); 
+    //     });
 
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        });
-    }
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty: prevState.qty + 1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {
-        const { qty } = this.state;
-        // Check To Keep the Qty From Not Going Below Zero
-        if (qty === 0){
-            return
-        } 
+    // decreaseQuantity = () => {
+    //     const { qty } = this.state;
+    //     // Check To Keep the Qty From Not Going Below Zero
+    //     if (qty === 0){
+    //         return
+    //     } 
 
-        // setState Form 2
-        this.setState(() => {
-            return {
-                qty: this.state.qty - 1
-            }
-        })
-    }
+    //     // setState Form 2
+    //     this.setState(() => {
+    //         return {
+    //             qty: this.state.qty - 1
+    //         }
+    //     })
+    // }
 
     render () {
-        console.log('this.props', this.props);
-        const { title, price, qty } = this.props.product;
-        const { product, onIncreaseQuantity, onDecreaseQuantity } = this.props;
+        // console.log('this.props', this.props);
+        const { title, price, qty, } = this.props.product;
+        const { product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct } = this.props;
         return (
             <div className = "cart-item">
                 <div className = "left-block">
@@ -78,6 +78,7 @@ class CartItem extends React.Component {
                             alt = "increase" 
                             className = "action-icons" 
                             src = "https://www.flaticon.com/svg/static/icons/svg/1214/1214428.svg" 
+                            onClick = { () => {onDeleteProduct(product.id)} }
                         />
                     </div>
                 </div>
